@@ -19,36 +19,15 @@ public class DB {
 	public static ResultSet rs;
 	
 	private String driverDB = "org.postgresql.Driver";
+	//cambie el postgres por su usuario del pgadmin
 	private String dbUser = "postgres";
 	private String dbName = "ZOO";
 	private String urlDB = "jdbc:postgresql://localhost:5432/" + this.dbName;
+	//cambie el asd por su contraseña del pgadmin
 	private String passwordDB = "asd";
 	
-	private String animalDB = "tabla";
 	
-	private String tipoDB = "Tipo";
-	private String reproduccionDB = "Reproduccion";
-	private String alimentacionDB = "Alimentacion";
-	private String temperamentoDB = "Temperamento";
-	private String habitatDB = "habitat";
-	private int cantidadDB = 0;
-	
-	
-	
-	//parte 2
-		/*public Connection DB() {
-			try {
-				Class.forName(driverDB);
-				this.conn = DriverManager.getConnection(urlDB, dbUser, passwordDB);
-				System.out.println("Conexion establecida");
-				
-				} catch (ClassNotFoundException | SQLException e) {
-				e.printStackTrace();
-				
-				} 
-			return conn;
-		}*/
-	
+	//conexion
 	private DB() {
 		try {
 			Class.forName(driverDB);
@@ -65,153 +44,6 @@ public class DB {
 		public static DB getInstances() {
 			return DB;
 			}
-		
-		//parte 4
-		public ResultSet dbtipo(String query) {
-			try {
-			this.stmt = this.conn.createStatement();
-			this.rs = this.stmt.executeQuery(query);
-			while(rs.next()) {
-			System.out.println(rs.getString("tipo")); 
-			}
-			} catch (SQLException e) {
-			e.printStackTrace();
-			}finally {
-			try {
-			this.stmt.close();
-			this.rs.close();
-			} catch (SQLException e) {
-			e.printStackTrace();
-			}
-			}
-			return rs;
-			} 
-		
-		public ResultSet dbalimentacion(String query) {
-			try {
-			this.stmt = this.conn.createStatement();
-			this.rs = this.stmt.executeQuery(query);
-			while(rs.next()) {
-			System.out.println(rs.getString("alimentacion")); 
-			}
-			} catch (SQLException e) {
-			e.printStackTrace();
-			}finally {
-			try {
-			this.stmt.close();
-			this.rs.close();
-			} catch (SQLException e) {
-			e.printStackTrace();
-			}
-			}
-			return rs;
-			} 
-		
-		public ResultSet dbreproduccion(String query) {
-			try {
-			this.stmt = this.conn.createStatement();
-			this.rs = this.stmt.executeQuery(query);
-			while(rs.next()) {
-			System.out.println(rs.getString("reproduccion")); 
-			}
-			} catch (SQLException e) {
-			e.printStackTrace();
-			}finally {
-			try {
-			this.stmt.close();
-			this.rs.close();
-			} catch (SQLException e) {
-			e.printStackTrace();
-			}
-			}
-			return rs;
-			} 
-		
-		public ResultSet dbtemperamento(String query) {
-			try {
-			this.stmt = this.conn.createStatement();
-			this.rs = this.stmt.executeQuery(query);
-			while(rs.next()) {
-			System.out.println(rs.getString("temperamento")); 
-			}
-			} catch (SQLException e) {
-			e.printStackTrace();
-			}finally {
-			try {
-			this.stmt.close();
-			this.rs.close();
-			} catch (SQLException e) {
-			e.printStackTrace();
-			}
-			}
-			return rs;
-			} 
-		
-		public ResultSet dbhabitat(String query) {
-			try {
-			this.stmt = this.conn.createStatement();
-			this.rs = this.stmt.executeQuery(query);
-			while(rs.next()) {
-			System.out.println(rs.getString("habitat")); 
-			}
-			} catch (SQLException e) {
-			e.printStackTrace();
-			}finally {
-			try {
-			this.stmt.close();
-			this.rs.close();
-			} catch (SQLException e) {
-			e.printStackTrace();
-			}
-			}
-			return rs;
-			} 
-		
-		public ResultSet dbcantidad(String query) {
-			try {
-			this.stmt = this.conn.createStatement();
-			this.rs = this.stmt.executeQuery(query);
-			while(rs.next()) {
-			System.out.println(rs.getString("cantidad")); 
-			}
-			} catch (SQLException e) {
-			e.printStackTrace();
-			}finally {
-			try {
-			this.stmt.close();
-			this.rs.close();
-			} catch (SQLException e) {
-			e.printStackTrace();
-			}
-			}
-			return rs;
-			}
-          
-		public ResultSet dbdatosSelect(String query) {
-			try {
-			this.stmt = this.conn.createStatement();
-			this.rs = this.stmt.executeQuery(query);
-			while(rs.next()) {
-		//	System.out.println(rs.getString("cantidad")); 
-				String animales = rs.getString("tipo");
-				Huevos_View.selectoviparo.addItem(animales);
-			}
-			} catch (SQLException e) {
-			e.printStackTrace();
-			}finally {
-			try {
-			this.stmt.close();
-			this.rs.close();
-			} catch (SQLException e) {
-			e.printStackTrace();
-			}
-			}
-			return rs;
-			}
-		
-		
-		
-		
 		
 		} 
 		
